@@ -8,6 +8,8 @@ import { persist } from 'zustand/middleware'
 
 const store = create(
   persist((set, get) => ({
+    script: "async (cs) => {\n  await cs.sleep(5000);\n  console.log('hello');\n}",
+    setScript: (script) => set({ script: script }),
     bears: 0,
     increasePopulation: () => set({ bears: get().bears + 1 }),
     removeAllBears: () => set({ bears: 0 }),
