@@ -4,17 +4,26 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware'
+import { persist } from 'zustand/middleware';
 
 const store = create(
   persist((set, get) => ({
+    page: 'dashboard',
+    setPage: (page) => set({ page: page }),
+
+    money: 0,
+    modMoney: (amount) => set({ money: get().money + amount }),
+
+    apples: 0,
+    modApples: (amount) => set({ apples: get().apples + amount }),
+
     script: "async (cs) => {\n  await cs.sleep(5000);\n  console.log('hello');\n}",
     setScript: (script) => set({ script: script }),
-    bears: 0,
-    increasePopulation: () => set({ bears: get().bears + 1 }),
-    removeAllBears: () => set({ bears: 0 }),
+    // bears: 0,
+    // increasePopulation: () => set({ bears: get().bears + 1 }),
+    // removeAllBears: () => set({ bears: 0 }),
   }), {
-    name: 'bear-store', // unique name
+    name: 'store', // unique name
   }));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
