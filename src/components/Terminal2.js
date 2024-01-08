@@ -1,4 +1,5 @@
 import Terminal from 'react-bash';
+import '../css/Terminal2.css';
 
 function Terminal2({store}) {
     return (

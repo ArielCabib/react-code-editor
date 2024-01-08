@@ -17,6 +17,9 @@ const store = create(
     apples: 0,
     modApples: (amount) => set({ apples: get().apples + amount }),
 
+    ownedFarms: [],
+    addFarm: (farm) => set({ ownedFarms: [...new Set(get().ownedFarms.concat(farm))] }),
+
     script: "async (cs) => {\n  await cs.sleep(5000);\n  console.log('hello');\n}",
     setScript: (script) => set({ script: script }),
     // bears: 0,

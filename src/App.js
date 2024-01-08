@@ -30,6 +30,7 @@ function App({store}) {
       <div className="App">
       <Grid container spacing={2} style={{height: '100%'}}>
         <Grid item xs={2}>
+          <h1>CowScripting</h1>
           <Button onClick={() => setPage('dashboard')} width="100%">Dashboard</Button><br />
           <Button onClick={() => setPage('editor')} width="100%">Editor</Button><br />
           <Button onClick={() => setPage('terminal')} width="100%">Terminal</Button><br />
