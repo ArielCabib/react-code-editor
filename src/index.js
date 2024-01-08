@@ -3,11 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware'
+
+const store = create(
+  persist((set, get) => ({
+    bears: 0,
+    increasePopulation: () => set({ bears: get().bears + 1 }),
+    removeAllBears: () => set({ bears: 0 }),
+  }), {
+    name: 'bear-store', // unique name
+  }));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App store={store} />
   </React.StrictMode>
 );
 
